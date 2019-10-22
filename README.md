@@ -20,7 +20,7 @@
     - .Ruserdata
   - test : 
     ```bash
-    rsync -avz --exclude-from ./.rsyncignore_push_to_upr \
+    rsync -avz --stats --exclude-from ./.rsyncignore_push_to_upr \
       --delete \
       --dry-run \
       ~/Github/RemoteServer-Workflow/ \
@@ -28,13 +28,13 @@
     ```
   - run 
     ```bash
-    rsync -avz --exclude-from ./.rsyncignore_push_to_upr \
+    rsync -avz --stats --exclude-from ./.rsyncignore_push_to_upr \
       --delete \
       ~/Github/RemoteServer-Workflow/ \
       wgao@upr:~/GitHub/RemoteServer-Workflow/
     ```
 - `rsync` pull from upr
-  - prepare `.rsyncignore_pull_from_upr`
+  - prepare `.rsyncignore_pull_from_upr` by adding <span style="color:red">.git</span> to it
     ```
     .DS_Store
     .vscode
@@ -42,11 +42,11 @@
     .Rproj.user
     .Rdata
     .Ruserdata
-    .git
+    .git # <-- don't download from upr
     ```
   - test
     ```bash
-    rsync -avz --exclude-from ./.rsyncignore_pull_from_upr \
+    rsync -avz --stats --exclude-from ./.rsyncignore_pull_from_upr \
       --dry-run \
       --delete \
       wgao@upr:~/GitHub/RemoteServer-Workflow/ \
@@ -54,7 +54,7 @@
     ```
   - run 
     ```bash
-    rsync -avz --exclude-from ./.rsyncignore_pull_from_upr \
+    rsync -avz --stats --exclude-from ./.rsyncignore_pull_from_upr \
       --dry-run \
       --delete \
       wgao@upr:~/GitHub/RemoteServer-Workflow/ \
