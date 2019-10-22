@@ -70,3 +70,13 @@
       wgao@upr:~/GitHub/RemoteServer-Workflow/ \
       ~/Github/RemoteServer-Workflow/
     ```
+## Others
+
+Wang add alias to call bash scripts
+
+> alias checklr_upr='./.check_lr_upr.sh'
+> alias lr_upr='./.lr_upr.sh'
+> alias checkrl_upr='./.check_rl_upr.sh'
+> alias rl_upr='./.rl_upr.sh'
+
+These aliases are currently in `~/.zshrc`
