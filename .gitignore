@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.vscode
+.DS_Store
+.vscode
+node_modules
