@@ -12,7 +12,7 @@
 
 - Git push / pull to local
 - `rsync` push to upr : git repository as sub-folder of wgao@upr:wgao@upr:~/GitHub/
-  - prepare `.rsyncignore_lr_upr`
+  - prepare `.lr_upr.rsyncignore`
     - .DS_Store
     - .vscode
     - .Rhistory
@@ -23,25 +23,25 @@
     - write bash script : `.check_lr_upr.sh` (local to remote upr)
 
     ```bash
-    rsync -avz --stats --exclude-from ./.rsyncignore_lr_upr \
+    rsync -avz --stats --exclude-from ./.lr_upr.rsyncignore \
       --delete \
       --dry-run \
       ~/Github/RemoteServer-Workflow/ \
       wgao@upr:~/GitHub/RemoteServer-Workflow/
     ```
 
-  - synchronisation with --delete 
+  - synchronisation with `--delete`
     - write bash script : `.lr_upr.sh` (local to remote upr)
 
     ```bash
-    rsync -avz --stats --exclude-from ./.rsyncignore_lr_upr \
+    rsync -avz --stats --exclude-from ./.lr_upr.rsyncignore \
       --delete \
       ~/Github/RemoteServer-Workflow/ \
       wgao@upr:~/GitHub/RemoteServer-Workflow/
     ```
 
 - `rsync` pull from upr
-  - prepare `.rsyncignore_rl_upr` by adding <span style="color:red">.git</span> to it
+  - prepare `.rl_upr.rsyncignore` by adding <span style="color:red">.git</span> to it
     > .DS_Store
     > .vscode
     > .Rhistory
@@ -54,18 +54,18 @@
     - write bash script : `.check_rl_upr.sh` (local to remote upr)
 
     ```bash
-    rsync -avz --stats --exclude-from ./.rsyncignore_rl_upr \
+    rsync -avz --stats --exclude-from ./.rl_upr.rsyncignore \
       --dry-run \
       --delete \
       wgao@upr:~/GitHub/RemoteServer-Workflow/ \
       ~/Github/RemoteServer-Workflow/
     ```
 
-  - synchronisation with --delete
+  - synchronisation with `--delete`
     - write bash script : `.rl_upr.sh` (remote upr to local)
 
     ```bash
-    rsync -avz --stats --exclude-from ./.rsyncignore_rl_upr \
+    rsync -avz --stats --exclude-from ./.rl_upr.rsyncignore \
       --delete \
       wgao@upr:~/GitHub/RemoteServer-Workflow/ \
       ~/Github/RemoteServer-Workflow/
