@@ -1,3 +1,4 @@
+
 # RemoteServer-Workflow
 
 ## Objectif
@@ -18,7 +19,9 @@
     - .Rproj.user
     - .Rdata
     - .Ruserdata
-  - test : 
+  - check : `dry-run` with `--delete`
+    - write bash script : `.check_lr_upr.sh` (local to remote upr)
+
     ```bash
     rsync -avz --stats --exclude-from ./.rsyncignore_push_to_upr \
       --delete \
@@ -26,33 +29,30 @@
       ~/Github/RemoteServer-Workflow/ \
       wgao@upr:~/GitHub/RemoteServer-Workflow/
     ```
-  - run 
+
+  - synchronisation with --delete 
+    - write bash script : `.lr_upr.sh` (local to remote upr)
+
     ```bash
     rsync -avz --stats --exclude-from ./.rsyncignore_push_to_upr \
       --delete \
       ~/Github/RemoteServer-Workflow/ \
       wgao@upr:~/GitHub/RemoteServer-Workflow/
     ```
+
 - `rsync` pull from upr
   - prepare `.rsyncignore_pull_from_upr` by adding <span style="color:red">.git</span> to it
-    ```
-    .DS_Store
-    .vscode
-    .Rhistory
-    .Rproj.user
-    .Rdata
-    .Ruserdata
-    .git # <-- don't download from upr
-    ```
-  - test
-    ```bash
-    rsync -avz --stats --exclude-from ./.rsyncignore_pull_from_upr \
-      --dry-run \
-      --delete \
-      wgao@upr:~/GitHub/RemoteServer-Workflow/ \
-      ~/Github/RemoteServer-Workflow/    
-    ```
-  - run 
+    > .DS_Store
+    > .vscode
+    > .Rhistory
+    > .Rproj.user
+    > .Rdata
+    > .Ruserdata
+    > .git # <-- don't download from upr
+
+  - check : `dry-run` with `--delete`
+    - write bash script : `.check_rl_upr.sh` (local to remote upr)
+
     ```bash
     rsync -avz --stats --exclude-from ./.rsyncignore_pull_from_upr \
       --dry-run \
@@ -61,5 +61,12 @@
       ~/Github/RemoteServer-Workflow/
     ```
 
+  - synchronisation with --delete
+    - write bash script : `.rl_upr.sh` (remote upr to local)
 
-
+    ```bash
+    rsync -avz --stats --exclude-from ./.rsyncignore_pull_from_upr \
+      --delete \
+      wgao@upr:~/GitHub/RemoteServer-Workflow/ \
+      ~/Github/RemoteServer-Workflow/
+    ```
