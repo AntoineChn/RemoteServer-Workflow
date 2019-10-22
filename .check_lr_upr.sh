@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rsync -avz --stats --exclude-from ./.rsyncignore_push_to_upr \
+rsync -avz --stats --exclude-from ./.rsyncignore_lr_upr \
     --delete \
     --dry-run \
     ~/Github/RemoteServer-Workflow/ \
